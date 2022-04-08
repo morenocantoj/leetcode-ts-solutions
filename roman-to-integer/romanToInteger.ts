@@ -30,12 +30,10 @@ export function romanToInt(s: string): number {
     let romanNumberParsed = romanNumbersToInt[letter]
     accumulatedSector += romanNumberParsed
 
-    if (
-      romanNumbers[index + 1] &&
-      romanNumbersToInt[romanNumbers[index + 1]] != romanNumberParsed
-    ) {
-      if (romanNumbersToInt[romanNumbers[index + 1]] > romanNumberParsed) {
-        ensureNumberToSubtractIsRight(accumulatedSector, romanNumbersToInt[romanNumbers[index + 1]])
+    const nextRomanNumber = romanNumbers[index + 1]
+    if (nextRomanNumber && romanNumbersToInt[nextRomanNumber] != romanNumberParsed) {
+      if (romanNumbersToInt[nextRomanNumber] > romanNumberParsed) {
+        ensureNumberToSubtractIsRight(accumulatedSector, romanNumbersToInt[nextRomanNumber])
         romanNumberParsed *= -1
       }
 
